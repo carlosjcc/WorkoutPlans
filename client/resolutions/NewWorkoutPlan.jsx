@@ -15,13 +15,33 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     this.state = {
       subscription: {
         resolutions: Meteor.subscribe("userResolutions")
-      }
-    },
-    {isLoggedIn: true};
+      },
+
+      isLoggedIn: true,
+    };
+    
+  }
+
+  addResolution() {
+
+    console.log("metodo para insertar");
+    //event.preventDefault();
+    var text = "insertada";
+
+    if (text) {
+      Meteor.call('addResolution', text, (error, data) => {
+        if(error) {
+          Bert.alert('Please login before submittin', 'danger', 'fixed-top', 'fa-frown-o')
+        } else {
+          //this.refs.resolution.value = "";  
+        }        
+      });
+    }
   }
 
   componentDidMount() {
     console.log("mounted");
+    this.addResolution();
   }
 
   componentWillUnmount() {
@@ -33,11 +53,9 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     return Resolutions.find().fetch();
   }
 
-  render() {
+  render() {    
     
-    let isLoggedIn = Meteor.userId();
-
-    //console.log(isLoggedIn);
+    let isLoggedIn = Meteor.userId();    
 
     if (isLoggedIn) {
       return (

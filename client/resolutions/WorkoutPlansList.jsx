@@ -20,6 +20,12 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
     {isLoggedIn: true};
   }
 
+  NewPlan() {
+    console.log("clicked");
+
+    FlowRouter.go('/new');
+  }
+
   componentWillUnmount() {
     this.state.subscription.resolutions.stop();
   }
@@ -62,7 +68,8 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
           </ReactCSSTransitionGroup>
 
           {/*<button className="btn waves-effect waves-light" onClick="location.href='/new'">New List</button>*/}
-          <a className="btn waves-effect waves-light" href="/new">New List</a>
+          {/*<a className="btn waves-effect waves-light" href="/new">New List</a>*/}
+          <a className="btn waves-effect waves-light" onClick={this.NewPlan}>New List</a>
 
         </ReactCSSTransitionGroup>
       )
