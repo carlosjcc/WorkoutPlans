@@ -11,6 +11,17 @@ Meteor.methods({
       user: Meteor.userId()
     });
   },
+  addBlankPlan() {
+    if(!Meteor.userId()){
+      throw new Meteor.Error('not-authorized');
+    }
+    Resolutions.insert({
+      name: "New Plan",
+      workOuts: [],      
+      createdAt: new Date(),
+      user: Meteor.userId()
+    });
+  },
   toggleResolution(resolution) {
     check(resolution, Object);
     if(Meteor.userId() !== resolution.user) {

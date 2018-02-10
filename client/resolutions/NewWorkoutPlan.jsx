@@ -22,26 +22,25 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     
   }
 
-  addResolution() {
+  addBlankPlan() {
 
-    console.log("metodo para insertar");
+    //console.log("metodo para insertar");
     //event.preventDefault();
-    var text = "insertada";
 
-    if (text) {
-      Meteor.call('addResolution', text, (error, data) => {
-        if(error) {
-          Bert.alert('Please login before submittin', 'danger', 'fixed-top', 'fa-frown-o')
-        } else {
-          //this.refs.resolution.value = "";  
-        }        
-      });
-    }
+    
+    Meteor.call('addBlankPlan', (error, data) => {
+      if(error) {
+        Bert.alert('Please login before submittin', 'danger', 'fixed-top', 'fa-frown-o')
+      } else {
+        //this.refs.resolution.value = "";  
+      }
+    });
   }
+  
 
   componentDidMount() {
     console.log("mounted");
-    this.addResolution();
+    this.addBlankPlan();
   }
 
   componentWillUnmount() {
