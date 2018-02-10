@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 
+
+
 export default class ResolutionSingle extends TrackerReact(Component) {
 
   constructor() {
@@ -50,11 +52,6 @@ export default class ResolutionSingle extends TrackerReact(Component) {
                 onClick={this.deleteResolution.bind(this)}>
                 &times;
         </button>
-        <button 
-                onClick={this.updateResolution.bind(this)}>
-                &times;
-        </button>
-
       </li>
     )
   }

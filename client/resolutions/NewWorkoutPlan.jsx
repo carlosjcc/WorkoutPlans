@@ -8,7 +8,7 @@ import ResolutionSingle from './ResolutionSingle.jsx';
 
 //Resolutions = new Mongo.Collection("resolutions");
 
-export default class ResolutionsWrapper extends TrackerReact(React.Component) {
+export default class NewWorkoutPlan extends TrackerReact(React.Component) {
 
   constructor() {
     super();
@@ -18,6 +18,10 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
       }
     },
     {isLoggedIn: true};
+  }
+
+  componentDidMount() {
+    console.log("mounted");
   }
 
   componentWillUnmount() {
@@ -61,7 +65,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
             })}
           </ReactCSSTransitionGroup>
 
-          <button className="btn waves-effect waves-light" type="submit" name="action">New List</button>
+
 
         </ReactCSSTransitionGroup>
       )

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class ResolutionsForm extends Component {
-  
+
   addResolution(event) {
     event.preventDefault();
     var text = this.refs.resolution.value.trim();
@@ -14,7 +14,7 @@ export default class ResolutionsForm extends Component {
           this.refs.resolution.value = "";  
         }        
       });
-    }    
+    }
   }
 
   render() {

@@ -6,7 +6,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ResolutionsForm from './ResolutionsForm.jsx';
 import ResolutionSingle from './ResolutionSingle.jsx';
 
-//Resolutions = new Mongo.Collection("resolutions");
+Resolutions = new Mongo.Collection("resolutions");
 
 export default class ResolutionsWrapper extends TrackerReact(React.Component) {
 
@@ -46,8 +46,8 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
                 transitionAppear={true}
                 >
             <h1> My Resolutions - {Session.get('test')} </h1>
-            
-          <ResolutionsForm/>
+
+
 
           <ReactCSSTransitionGroup
             component="ul"
@@ -61,7 +61,8 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
             })}
           </ReactCSSTransitionGroup>
 
-          <button className="btn waves-effect waves-light" type="submit" name="action">New List</button>
+          {/*<button className="btn waves-effect waves-light" onClick="location.href='/new'">New List</button>*/}
+          <a className="btn waves-effect waves-light" href="/new">New List</a>
 
         </ReactCSSTransitionGroup>
       )
