@@ -18,25 +18,26 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
       },
 
       isLoggedIn: true,
+      planId: "",
     };
-    
+
   }
 
   addBlankPlan() {
 
-    //console.log("metodo para insertar");
-    //event.preventDefault();
+    console.log("adding blank");
 
-    
     Meteor.call('addBlankPlan', (error, data) => {
+      console.log("id: " + data);
+      
       if(error) {
         Bert.alert('Please login before submittin', 'danger', 'fixed-top', 'fa-frown-o')
       } else {
-        //this.refs.resolution.value = "";  
+        //this.refs.resolution.value = "";
+        this.setState({planId: data});
       }
     });
   }
-  
 
   componentDidMount() {
     console.log("mounted");
@@ -52,9 +53,11 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     return Resolutions.find().fetch();
   }
 
-  render() {    
-    
-    let isLoggedIn = Meteor.userId();    
+  render() {
+
+    console.log(this);
+
+    let isLoggedIn = Meteor.userId();
 
     if (isLoggedIn) {
       return (
@@ -66,9 +69,9 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
                 transitionLeaveTimeout={400}
                 transitionAppear={true}
                 >
-            <h1> My Resolutions - {Session.get('test')} </h1>
+            {/*<h1> My Resolutions - {Session.get('test')} </h1>*/}
             
-          <ResolutionsForm/>
+          <ResolutionsForm planId={this.state.planId}/>
 
           <ReactCSSTransitionGroup
             component="ul"
@@ -89,8 +92,8 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     }
 
     else {
-      return <h1>Please Log in.</h1>;  
+      return <h1>Please Log in.</h1>;
     }
-    
+
   }
 }

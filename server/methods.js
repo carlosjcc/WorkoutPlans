@@ -15,13 +15,41 @@ Meteor.methods({
     if(!Meteor.userId()){
       throw new Meteor.Error('not-authorized');
     }
-    Resolutions.insert({
+    let id =  Resolutions.insert({
       name: "New Plan",
-      workOuts: [],      
+      workOuts: [],
       createdAt: new Date(),
       user: Meteor.userId()
     });
+
+    return id;
   },
+
+  changeName(id, name) {
+    if(!Meteor.userId()){
+      throw new Meteor.Error('not-authorized');
+    }
+    Resolutions.update(
+      {_id: id},
+      { $set:
+        {
+          name: name
+        }
+
+      });
+  },
+
+  addExercise(id, text) {
+
+    Resolutions.update(
+      {_id: id},
+      { $push:
+        {
+          workOuts: text
+        }
+      });
+  },
+
   toggleResolution(resolution) {
     check(resolution, Object);
     if(Meteor.userId() !== resolution.user) {
