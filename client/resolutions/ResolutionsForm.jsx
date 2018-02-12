@@ -8,7 +8,8 @@ export default class ResolutionsForm extends Component {
     Meteor.call('changeName', this.props.planId, this.refs.name.value.trim());
   }
 
-  addExercise(props) {
+  addExercise(event, props) {
+    event.preventDefault();
     Meteor.call('addExercise', this.props.planId, this.refs.resolution.value.trim());
   }
 
