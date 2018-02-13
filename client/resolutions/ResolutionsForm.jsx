@@ -10,7 +10,18 @@ export default class ResolutionsForm extends Component {
 
   addExercise(event, props) {
     event.preventDefault();
-    Meteor.call('addExercise', this.props.planId, this.refs.resolution.value.trim());
+
+    let text = this.refs.resolution.value.trim();
+
+    if (text) {
+      Meteor.call('addExercise', this.props.planId, text, (error, data) => {
+        if(error) {
+          Bert.alert('Please login before submittin', 'danger', 'fixed-top', 'fa-frown-o')
+        } else {
+          this.refs.resolution.value = "";
+        }
+      });
+    }
   }
 
   addResolution(event) {

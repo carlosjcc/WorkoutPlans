@@ -80,9 +80,13 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
             transitionEnterTimeout={600}
             transitionLeaveTimeout={400}
             >
-            {this.resolutions().map( (resolution) => {
+            {/*this.resolutions().map( (resolution) => {
               return <ResolutionSingle key={resolution._id} resolution={resolution} />
-            })}
+            })*/}
+
+            {console.log("id: " + this.state.planId)}
+
+
           </ReactCSSTransitionGroup>
 
 
