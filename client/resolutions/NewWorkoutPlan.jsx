@@ -53,9 +53,32 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     return Resolutions.find().fetch();
   }
 
+  getPlan() {
+    // find returns a cursos - fetch returns the object
+    //return Resolutions.find(this.state.planId).fetch();
+    //let plan = Resolutions.find({_id: this.state.planId}, { _id:0});
+    let plan = Resolutions.find({_id: this.state.planId});
+
+    plan.forEach((pl) =>  console.log(pl.workOuts));
+
+  }
+
+  getExercises() {
+
+    //let plan = Resolutions.find(this.state.planId).fetch();
+    let plan = Resolutions.find({_id: this.state.planId});
+
+    plan.forEach((pl) =>  console.log(pl.workOuts));
+    //return plan;
+  }
+
+  getCursor() {
+    return Resolutions.find({_id: this.state.planId});
+  }
+
   render() {
 
-    console.log(this);
+    console.log("render");
 
     let isLoggedIn = Meteor.userId();
 
@@ -70,7 +93,7 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
                 transitionAppear={true}
                 >
             {/*<h1> My Resolutions - {Session.get('test')} </h1>*/}
-            
+
           <ResolutionsForm planId={this.state.planId}/>
 
           <ReactCSSTransitionGroup
@@ -80,11 +103,17 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
             transitionEnterTimeout={600}
             transitionLeaveTimeout={400}
             >
-            {/*this.resolutions().map( (resolution) => {
+            {/* this.resolutions().map( (resolution) => {
               return <ResolutionSingle key={resolution._id} resolution={resolution} />
-            })*/}
+            }) */}
 
-            {console.log("id: " + this.state.planId)}
+            {/*console.log("id: " + this.state.planId)*/}
+
+            {this.getPlan()}
+
+            {/*this.getCursor().map( (pl) => {
+              return <ResolutionSingle  pl={pl.workOuts} />
+            })*/}
 
 
           </ReactCSSTransitionGroup>
