@@ -56,9 +56,9 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
             transitionEnterTimeout={600}
             transitionLeaveTimeout={400}
             >
-            {this.resolutions().map( (resolution) => {
+            {/*this.resolutions().map( (resolution) => {
               return <ResolutionSingle key={resolution._id} resolution={resolution} />
-            })}
+            })*/}
           </ReactCSSTransitionGroup>
 
           <button className="btn waves-effect waves-light" type="submit" name="action">New List</button>
