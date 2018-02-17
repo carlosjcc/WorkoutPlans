@@ -32,16 +32,13 @@ export default class ResolutionSingle extends TrackerReact(Component) {
   }
 
   render() {
-    
-    
-    
+
+    //console.log(this.props);
+
     return (
 
       <li >
-        
-        <ul>tome</ul>
-
-        
+        {this.props.pl}
       </li>
     )
   }

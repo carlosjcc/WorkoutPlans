@@ -32,6 +32,8 @@ export default class ResolutionSingle extends TrackerReact(Component) {
   }
 
   render() {
+
+    console.log(this.props.resolution);
     
     const resolutionClass = this.props.resolution.complete ? "checked" : "";
     const status = this.props.resolution.complete ? <span className="completed">Completed</span> : '';

@@ -5,6 +5,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import ResolutionsForm from './ResolutionsForm.jsx';
 import ResolutionSingle from './ResolutionSingle.jsx';
+import ExSingle from './ExSingle.jsx';
 
 //Resolutions = new Mongo.Collection("resolutions");
 
@@ -79,11 +80,21 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     //plan.forEach((pl) =>  console.log(pl.workOuts));
     //return plan;
 
+    console.log(arr);
+
     // copy excersices to return array
-    plan.forEach((ele) =>  arr.push(ele.workOuts));
+    plan.map((ele) =>  arr.push(ele.workOuts));
 
     console.log(arr);
-    //return arr;
+
+    if (arr.length == 0) {
+      return arr;
+    }
+    else {
+      return arr[0];
+    }
+
+    
   }
 
   getCursor() {
@@ -92,9 +103,14 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
 
   render() {
 
-    //console.log("render");
+    console.log("render");
 
     let isLoggedIn = Meteor.userId();
+
+    //let arr = ["uno", "dos", "tres"];
+
+    let arr = this.getExercises();
+    console.log(arr);
 
     if (isLoggedIn) {
       return (
@@ -117,20 +133,15 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
             transitionEnterTimeout={600}
             transitionLeaveTimeout={400}
             >
-            {}
-
-            {/*console.log("id: " + this.state.planId)*/}
-
-            {this.getExercises()}
-
-            {/*this.getCursor().map( (pl) => {
-              return <ResolutionSingle  pl={pl.workOuts} />
-            })*/}
+            { arr.map( (ex, i) => {
+                console.log("ex: " + ex + " index: " + i);
+                return <ExSingle pl={ex}  key={i} />;
+            })}
 
 
           </ReactCSSTransitionGroup>
 
-          
+
 
 
 
