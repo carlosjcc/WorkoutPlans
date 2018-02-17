@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ExSingle from './ExSingle.jsx';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 export default class RoutineDetail extends TrackerReact(Component) {
 
   constructor() {
@@ -71,15 +73,34 @@ export default class RoutineDetail extends TrackerReact(Component) {
     let arr = this.getExercises();
 
     return (
-      <div>
+
+      <ReactCSSTransitionGroup
+                component="div"
+                transitionName="route"
+                transitionEnterTimeout={600}
+                transitionAppearTimeout={600}
+                transitionLeaveTimeout={400}
+                transitionAppear={true}
+                >
+      
         <h1>{res.name}</h1>
 
-        { arr.map( (ex, i) => {
-                //console.log("ex: " + ex + " index: " + i);
-                return <ExSingle pl={ex}  key={i} />;
-        })}
+        <ReactCSSTransitionGroup
+            component="ul"
+            className="resolutions"
+            transitionName="resolutionLoad"
+            transitionEnterTimeout={600}
+            transitionLeaveTimeout={400}
+            >
 
-      </div>
+          { arr.map( (ex, i) => {
+                  //console.log("ex: " + ex + " index: " + i);
+                  return <ExSingle pl={ex}  key={i} />;
+          })}
+
+        </ReactCSSTransitionGroup>
+
+      </ReactCSSTransitionGroup>
     )
   }
 }
