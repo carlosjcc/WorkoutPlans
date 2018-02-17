@@ -45,7 +45,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
                 transitionLeaveTimeout={400}
                 transitionAppear={true}
                 >
-            <h1> My Resolutions - {Session.get('test')} </h1>
+            <h1> My Workout Plans - {Session.get('test')} </h1>
             
           <ResolutionsForm/>
 
@@ -61,7 +61,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
             })*/ }
           </ReactCSSTransitionGroup>
 
-          <button className="btn waves-effect waves-light" type="submit" name="action">New List</button>
+          <button className="btn waves-effect waves-light" type="submit" name="action">New Routine</button>
 
         </ReactCSSTransitionGroup>
       )
