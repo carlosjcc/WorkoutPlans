@@ -23,7 +23,7 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
   }
 
   NewPlan() {
-    console.log("clicked");
+    //console.log("clicked");
 
     FlowRouter.go('/new');
   }

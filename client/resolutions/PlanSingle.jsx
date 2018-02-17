@@ -13,25 +13,25 @@ export default class ResolutionSingle extends TrackerReact(Component) {
   }
 
   toggleChecked() {
-    console.log(this);
+    //console.log(this);
     Meteor.call('toggleResolution', this.props.resolution);
   }
 
   deleteResolution() {
-    console.log(this);
+    //console.log(this);
     Meteor.call('deleteResolution', this.props.resolution);
   }
 
   updateResolution() {
-    console.log(this.props.resolution);
+    //console.log(this.props.resolution);
     this.props.resolution.text = `${this.props.resolution.text}!`;
-    console.log(this.props.resolution);
+    //console.log(this.props.resolution);
     //Meteor.call('updateResolution', this.props.resolution);
   }
 
   render() {
 
-    console.log(this.props.resolution);
+    //console.log(this.props.resolution);
 
     return (
 

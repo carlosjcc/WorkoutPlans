@@ -20,14 +20,14 @@ export default class RoutineDetail extends TrackerReact(Component) {
   }
 
   componentDidMount(){
-    console.log(this.props.id);
+    //console.log(this.props.id);
     this.setState({planId: this.props.id});
   }
 
   resolution() {
     // find() returns a cursos - fetch() returns the object
     //return Resolutions.find({_id: this.props.id}).fetch();
-    console.log(this.state.planId);
+    //console.log(this.state.planId);
     return Resolutions.findOne(this.props.id);
   }
 
