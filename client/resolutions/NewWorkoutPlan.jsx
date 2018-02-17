@@ -19,17 +19,17 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
       },
 
       isLoggedIn: true,
-      planId: "",
+      planId: this.props.resolution._id,
     };
 
   }
 
   addBlankPlan() {
 
-    console.log("adding blank");
+    //console.log("adding blank");
 
     Meteor.call('addBlankPlan', (error, data) => {
-      console.log("id: " + data);
+      //console.log("id: " + data);
       
       if(error) {
         Bert.alert('Please login before submittin', 'danger', 'fixed-top', 'fa-frown-o')
@@ -41,7 +41,7 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
   }
 
   componentDidMount() {
-    console.log("mounted");
+    //console.log("mounted");
     this.addBlankPlan();
   }
 
@@ -59,9 +59,6 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     //return Resolutions.find(this.state.planId).fetch();
     //let plan = Resolutions.find({_id: this.state.planId}, { _id:0});
     let plan = Resolutions.find({_id: this.state.planId});
-
-
-
     plan.forEach((pl) =>  console.log(pl.workOuts));
 
   }
@@ -80,12 +77,12 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     //plan.forEach((pl) =>  console.log(pl.workOuts));
     //return plan;
 
-    console.log(arr);
+    //console.log(arr);
 
     // copy excersices to return array
     plan.map((ele) =>  arr.push(ele.workOuts));
 
-    console.log(arr);
+    //console.log(arr);
 
     if (arr.length == 0) {
       return arr;
@@ -94,7 +91,6 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
       return arr[0];
     }
 
-    
   }
 
   getCursor() {
@@ -110,7 +106,7 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
     //let arr = ["uno", "dos", "tres"];
 
     let arr = this.getExercises();
-    console.log(arr);
+    //console.log(arr);
 
     if (isLoggedIn) {
       return (
@@ -134,16 +130,11 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
             transitionLeaveTimeout={400}
             >
             { arr.map( (ex, i) => {
-                console.log("ex: " + ex + " index: " + i);
+                //console.log("ex: " + ex + " index: " + i);
                 return <ExSingle pl={ex}  key={i} />;
             })}
 
-
           </ReactCSSTransitionGroup>
-
-
-
-
 
         </ReactCSSTransitionGroup>
       )

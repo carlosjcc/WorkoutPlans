@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class ResolutionsForm extends Component {
 
   changeName(props) {
-    console.log("id: " + this.props.planId + " value: " + this.refs.name.value.trim());
+    //console.log("id: " + this.props.planId + " value: " + this.refs.name.value.trim());
 
     Meteor.call('changeName', this.props.planId, this.refs.name.value.trim());
   }

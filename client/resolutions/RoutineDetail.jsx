@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
+import ExSingle from './ExSingle.jsx';
 
 export default class RoutineDetail extends TrackerReact(Component) {
 
@@ -8,7 +9,9 @@ export default class RoutineDetail extends TrackerReact(Component) {
     this.state = {
       subscription: {
         resolutions: Meteor.subscribe("userResolutions")
-      }
+      },
+      isLoggedIn: true,
+      planId: ""
     }
   }
 
@@ -16,10 +19,46 @@ export default class RoutineDetail extends TrackerReact(Component) {
     this.state.subscription.resolutions.stop();
   }
 
+  componentDidMount(){
+    console.log(this.props.id);
+    this.setState({planId: this.props.id});
+  }
+
   resolution() {
     // find() returns a cursos - fetch() returns the object
     //return Resolutions.find({_id: this.props.id}).fetch();
+    console.log(this.state.planId);
     return Resolutions.findOne(this.props.id);
+  }
+
+  getExercises() {
+
+    // array to return the excersices 
+    let arr = [];
+
+    //let plan = Resolutions.find(this.state.planId).fetch();
+
+    // find document
+    let plan = Resolutions.find({_id: this.state.planId});
+
+    // print on console
+    //plan.forEach((pl) =>  console.log(pl.workOuts));
+    //return plan;
+
+    //console.log(arr);
+
+    // copy excersices to return array
+    plan.map((ele) =>  arr.push(ele.workOuts));
+
+    //console.log(arr);
+
+    if (arr.length == 0) {
+      return arr;
+    }
+    else {
+      return arr[0];
+    }
+
   }
   
   render() {
@@ -29,9 +68,17 @@ export default class RoutineDetail extends TrackerReact(Component) {
       return(<div>Loading...</div>);
     }
 
+    let arr = this.getExercises();
+
     return (
       <div>
-        <h1>{res.name}</h1>        
+        <h1>{res.name}</h1>
+
+        { arr.map( (ex, i) => {
+                //console.log("ex: " + ex + " index: " + i);
+                return <ExSingle pl={ex}  key={i} />;
+        })}
+
       </div>
     )
   }
