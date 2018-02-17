@@ -42,6 +42,11 @@ export default class ResolutionSingle extends TrackerReact(Component) {
 
         {<a href={`/plan/${this.props.resolution._id}`}>{this.props.resolution.name}</a>}
 
+        <button className="btn-cancel"
+                onClick={this.deleteResolution.bind(this)}>
+                &times;
+        </button>
+
 
       </li>
     )

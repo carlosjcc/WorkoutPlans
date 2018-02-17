@@ -19,7 +19,7 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
       },
 
       isLoggedIn: true,
-      planId: this.props.resolution._id,
+      planId: ""
     };
 
   }
@@ -99,7 +99,7 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
 
   render() {
 
-    console.log("render");
+    //console.log("render");
 
     let isLoggedIn = Meteor.userId();
 
