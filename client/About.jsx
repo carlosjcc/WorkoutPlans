@@ -17,9 +17,10 @@ export default class About extends Component {
             transitionLeaveTimeout={400}
             transitionAppear={true}
             >
-        <h1>About Us</h1>
-        <p>asdfasdf sd fas asdf asdf asdf asdf sdfsdf asdf asdf asdf asdf asdf asdf </p>
-        <button onClick={this.setVar}>Sign Up</button>
+        <h1>About This App</h1>
+        <p>This app was created by Carlos Corrales using Meteor, React, ES6 and JSX</p>
+        <p>contact: carloscorralesch@gmail.com</p>
+        {/*<button onClick={this.setVar}>Sign Up</button>*/}
       </ReactCSSTransitionGroup>
     )
   }
