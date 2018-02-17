@@ -38,7 +38,9 @@ export default class ResolutionSingle extends TrackerReact(Component) {
       <li >
 
         {/*<a href={`/resolutions/${this.props.resolution._id}`}>{this.props.resolution.text}</a>*/}
-        {this.props.resolution.name}
+        {/*this.props.resolution.name*/}
+
+        {<a href={`/plan/${this.props.resolution._id}`}>{this.props.resolution.name}</a>}
 
 
       </li>

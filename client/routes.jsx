@@ -7,6 +7,8 @@ import WorkoutPlansList from './resolutions/WorkoutPlansList.jsx';
 import About from './About.jsx';
 import ResolutionDetail from './resolutions/ResolutionDetail.jsx';
 import ResolutionLogin from './resolutions/ResolutionLogin.jsx';
+import RoutineDetail from './resolutions/RoutineDetail.jsx';
+
 
 /*FlowRouter.route('/', {
   action() {
@@ -40,10 +42,10 @@ FlowRouter.route('/new', {
   }
 });
 
-FlowRouter.route('/resolutions/:id', {
+FlowRouter.route('/plan/:id', {
   action(params) {
     mount(MainLayout, {
-      content: (<ResolutionDetail id={params.id} />)
+      content: (<RoutineDetail id={params.id} />)
     })
   }
 });
