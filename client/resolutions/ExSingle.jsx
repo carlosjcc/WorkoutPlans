@@ -38,6 +38,7 @@ export default class ResolutionSingle extends TrackerReact(Component) {
     return (
 
       <li >
+
         {this.props.pl}
       </li>
     )

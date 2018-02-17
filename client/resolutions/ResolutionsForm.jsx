@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 export default class ResolutionsForm extends Component {
 
-  changeName(props) {
+  changeName(event, props) {
+    event.preventDefault();
     //console.log("id: " + this.props.planId + " value: " + this.refs.name.value.trim());
 
     Meteor.call('changeName', this.props.planId, this.refs.name.value.trim());
@@ -43,7 +44,7 @@ export default class ResolutionsForm extends Component {
     return(
 
       <div>        
-        <form onChange={this.changeName.bind(this)} value="New Workout Plan">
+        <form onChange={this.changeName.bind(this)} onSubmit={this.changeName.bind(this)} value="New Workout Plan">
           <input
             placeholder="New Workout Plan" 
             ref="name"
