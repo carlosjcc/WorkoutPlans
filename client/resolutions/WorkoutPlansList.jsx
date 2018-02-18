@@ -8,6 +8,7 @@ import ResolutionSingle from './ResolutionSingle.jsx';
 import PlanSingle from './PlanSingle.jsx';
 
 
+
 Resolutions = new Mongo.Collection("resolutions");
 
 export default class ResolutionsWrapper extends TrackerReact(React.Component) {

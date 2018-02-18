@@ -13,6 +13,10 @@
     "react-addons-css-transition-group": "^15.6.2",
     "react-addons-transition-group": "^15.6.2",
     "react-dom": "^16.2.0",
+    "react-inline-editing": "^1.0.10",
     "react-mounter": "^1.2.0"
+  },
+  "devDependencies": {
+    "react-edit-inline": "^1.0.8"
   }
 }
