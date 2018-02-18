@@ -131,7 +131,7 @@ export default class NewWorkoutPlan extends TrackerReact(React.Component) {
             >
             { arr.map( (ex, i) => {
                 //console.log("ex: " + ex + " index: " + i);
-                return <ExSingle pl={ex}  key={i} />;
+                return <ExSingle pl={ex}  key={i} id={this.state.planId}/>;
             })}
 
           </ReactCSSTransitionGroup>

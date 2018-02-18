@@ -66,6 +66,16 @@ Meteor.methods({
     }
     Resolutions.remove(resolution._id);
   },
+
+  deleteExercise(id, exercise) {    
+    /*if(Meteor.userId() !== resolution.user) {
+      throw new Meteor.Error('not-authorized');
+    }*/
+
+    console.log(id + " " + exercise);
+    Resolutions.update( {_id: id}, {$pull: { workOuts: exercise} } );
+  },
+
   updateResolution(resolution) {
     check(resolution, Object);
     if(Meteor.userId() !== resolution.user) {

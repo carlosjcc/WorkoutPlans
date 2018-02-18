@@ -17,6 +17,7 @@
     "react-mounter": "^1.2.0"
   },
   "devDependencies": {
-    "react-edit-inline": "^1.0.8"
+    "react-edit-inline": "^1.0.8",
+    "riek": "^1.1.0"
   }
 }
