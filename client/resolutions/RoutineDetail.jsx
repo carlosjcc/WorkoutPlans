@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ExSingle from './ExSingle.jsx';
+import ResolutionsForm from './ResolutionsForm.jsx';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -13,7 +14,8 @@ export default class RoutineDetail extends TrackerReact(Component) {
         resolutions: Meteor.subscribe("userResolutions")
       },
       isLoggedIn: true,
-      planId: ""
+      planId: "",
+      estado: false
     }
   }
 
@@ -62,6 +64,17 @@ export default class RoutineDetail extends TrackerReact(Component) {
     }
 
   }
+
+  click() {
+    console.log("clicked");
+    let nextState;
+
+    if (this.state.estado) {
+      this.setState( {estado: false} )
+    } else {
+      this.setState( {estado: true} )
+    }
+  }
   
   render() {
 
@@ -85,6 +98,10 @@ export default class RoutineDetail extends TrackerReact(Component) {
       
         <h1>{res.name}</h1>
 
+        <div>
+          {this.state.estado ? <ResolutionsForm planId={this.state.planId}/> : ""}
+        </div>
+
         <ReactCSSTransitionGroup
             component="ul"
             className="resolutions"
@@ -97,6 +114,13 @@ export default class RoutineDetail extends TrackerReact(Component) {
                   //console.log("ex: " + ex + " index: " + i);
                   return <ExSingle pl={ex}  key={i} id={this.state.planId}/>;
           })}
+
+          <button
+            onClick={this.click.bind(this)}
+            > 
+            EDIT 
+          </button>
+
 
         </ReactCSSTransitionGroup>
 
