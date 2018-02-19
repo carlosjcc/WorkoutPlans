@@ -116,14 +116,13 @@ export default class RoutineDetail extends TrackerReact(Component) {
                   return <ExSingle pl={ex}  key={i} id={this.state.planId}/>;
           })}
 
-          <button
-            onClick={this.click.bind(this)}
-            > 
-            EDIT 
-          </button>
-
-
         </ReactCSSTransitionGroup>
+
+        <button
+          onClick={this.click.bind(this)}
+        > 
+          {this.state.estado ? "DONE" : "EDIT"} 
+        </button>
 
       </ReactCSSTransitionGroup>
     )
