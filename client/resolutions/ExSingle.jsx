@@ -19,26 +19,12 @@ export default class ResolutionSingle extends TrackerReact(Component) {
     Meteor.call('toggleResolution', this.props.resolution);
   }
 
-  deleteResolution() {
-    console.log(this.props);
-    Meteor.call('deleteResolution', this.props.resolution);
-  }
-
   deleteExercise() {
     //console.log(this.props.id + " " + this.props.pl);
     Meteor.call('deleteExercise', this.props.id, this.props.pl);
   }
 
-  updateResolution() {
-    console.log(this.props.resolution);
-    this.props.resolution.text = `${this.props.resolution.text}!`;
-    console.log(this.props.resolution);
-    //Meteor.call('updateResolution', this.props.resolution);
-  }
-
   render() {
-
-    //console.log(this.props);
 
     return (
       <div>
@@ -53,7 +39,6 @@ export default class ResolutionSingle extends TrackerReact(Component) {
           </button>
         </li>
 
-        
       </div>
     )
   }

@@ -1,16 +1,5 @@
 Meteor.methods({
-  addResolution(resolution) {
-    check(resolution, String);
-    if(!Meteor.userId()){
-      throw new Meteor.Error('not-authorized');
-    }
-    Resolutions.insert({
-      text: resolution,
-      complete: false,
-      createdAt: new Date(),
-      user: Meteor.userId()
-    });
-  },
+
   addBlankPlan() {
     if(!Meteor.userId()){
       throw new Meteor.Error('not-authorized');
@@ -40,7 +29,6 @@ Meteor.methods({
   },
 
   addExercise(id, text) {
-
     Resolutions.update(
       {_id: id},
       { $push:
@@ -59,6 +47,7 @@ Meteor.methods({
       $set: {complete: !resolution.complete}
     });
   },
+
   deleteResolution(resolution) {
     check(resolution, Object);
     if(Meteor.userId() !== resolution.user) {
@@ -67,11 +56,7 @@ Meteor.methods({
     Resolutions.remove(resolution._id);
   },
 
-  deleteExercise(id, exercise) {    
-    /*if(Meteor.userId() !== resolution.user) {
-      throw new Meteor.Error('not-authorized');
-    }*/
-
+  deleteExercise(id, exercise) {
     console.log(id + " " + exercise);
     Resolutions.update( {_id: id}, {$pull: { workOuts: exercise} } );
   },

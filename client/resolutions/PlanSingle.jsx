@@ -22,13 +22,6 @@ export default class ResolutionSingle extends TrackerReact(Component) {
     Meteor.call('deleteResolution', this.props.resolution);
   }
 
-  updateResolution() {
-    //console.log(this.props.resolution);
-    this.props.resolution.text = `${this.props.resolution.text}!`;
-    //console.log(this.props.resolution);
-    //Meteor.call('updateResolution', this.props.resolution);
-  }
-
   render() {
 
     //console.log(this.props.resolution);
@@ -37,16 +30,12 @@ export default class ResolutionSingle extends TrackerReact(Component) {
 
       <li >
 
-        {/*<a href={`/resolutions/${this.props.resolution._id}`}>{this.props.resolution.text}</a>*/}
-        {/*this.props.resolution.name*/}
-
         {<a className="enlaces" href={`/plan/${this.props.resolution._id}`}>{this.props.resolution.name}</a>}
 
         <button className="btn-cancel"
                 onClick={this.deleteResolution.bind(this)}>
                 &times;
         </button>
-
 
       </li>
     )

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 export default class ResolutionsForm extends Component {
 
+  // changes the workout plan name
   changeName(event, props) {
     event.preventDefault();
     //console.log("id: " + this.props.planId + " value: " + this.refs.name.value.trim());
@@ -14,6 +15,7 @@ export default class ResolutionsForm extends Component {
     }
   }
 
+  // adds an excersice list to the workout plan
   addExercise(event, props) {
     event.preventDefault();
 
@@ -30,23 +32,7 @@ export default class ResolutionsForm extends Component {
     }
   }
 
-  addResolution(event) {
-    event.preventDefault();
-     var text = this.refs.resolution.value.trim();
-
-    if (text) {
-      Meteor.call('addResolution', text, (error, data) => {
-        if(error) {
-          Bert.alert('Please login before submittin', 'danger', 'fixed-top', 'fa-frown-o')
-        } else {
-          this.refs.resolution.value = "";
-        }
-      });
-    }
-  }
-
   render() {
-
     //console.log(this.props);
 
     const defValue = this.props.name ? this.props.name : "";

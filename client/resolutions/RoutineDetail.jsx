@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ExSingle from './ExSingle.jsx';
-import ResolutionsForm from './ResolutionsForm.jsx';
+import WorkoutForm from './WorkoutForm.jsx';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -15,7 +15,7 @@ export default class RoutineDetail extends TrackerReact(Component) {
       },
       isLoggedIn: true,
       planId: "",
-      estado: false
+      editing: false
     }
   }
 
@@ -28,33 +28,22 @@ export default class RoutineDetail extends TrackerReact(Component) {
     this.setState({planId: this.props.id});
   }
 
-  resolution() {
-    // find() returns a cursos - fetch() returns the object
-    //return Resolutions.find({_id: this.props.id}).fetch();
-    //console.log(this.state.planId);
+  // gets plan requested by user
+  resolution() {    
     return Resolutions.findOne(this.props.id);
   }
 
+  // get the exercises of the workout plan
   getExercises() {
 
-    // array to return the excersices 
+    // array to return the excersices
     let arr = [];
 
-    //let plan = Resolutions.find(this.state.planId).fetch();
-
-    // find document
+    // find document that contais workout plan 
     let plan = Resolutions.find({_id: this.state.planId});
 
-    // print on console
-    //plan.forEach((pl) =>  console.log(pl.workOuts));
-    //return plan;
-
-    //console.log(arr);
-
     // copy excersices to return array
-    plan.map((ele) =>  arr.push(ele.workOuts));
-
-    //console.log(arr);
+    plan.map((ele) =>  arr.push(ele.workOuts));    
 
     if (arr.length == 0) {
       return arr;
@@ -62,18 +51,11 @@ export default class RoutineDetail extends TrackerReact(Component) {
     else {
       return arr[0];
     }
-
   }
 
-  click() {
-    //console.log("clicked");
-    let nextState;
+  editPlan() {
 
-    if (this.state.estado) {
-      this.setState( {estado: false} )
-    } else {
-      this.setState( {estado: true} )
-    }
+    this.state.editing ? this.setState( {editing: false} ) : this.setState( {editing: true} )
   }
   
   render() {
@@ -83,6 +65,7 @@ export default class RoutineDetail extends TrackerReact(Component) {
       return(<div>Loading...</div>);
     }
 
+    // get excersises list
     let arr = this.getExercises();
 
     return (
@@ -95,12 +78,12 @@ export default class RoutineDetail extends TrackerReact(Component) {
                 transitionLeaveTimeout={400}
                 transitionAppear={true}
                 >
-        <div>        
-          {this.state.estado ? "" : <h1>{res.name}</h1>}
+        <div>
+          {this.state.editing ? "" : <h1>{res.name}</h1>}
         </div>
 
         <div>
-          {this.state.estado ? <ResolutionsForm planId={this.state.planId} name={res.name} /> : ""}
+          {this.state.editing ? <WorkoutForm planId={this.state.planId} name={res.name} /> : ""}
         </div>
 
         <ReactCSSTransitionGroup
@@ -112,16 +95,15 @@ export default class RoutineDetail extends TrackerReact(Component) {
             >
 
           { arr.map( (ex, i) => {
-                  //console.log("ex: " + ex + " index: " + i);
                   return <ExSingle pl={ex}  key={i} id={this.state.planId}/>;
           })}
 
         </ReactCSSTransitionGroup>
 
         <button
-          onClick={this.click.bind(this)}
-        > 
-          {this.state.estado ? "DONE" : "EDIT"} 
+          onClick={this.editPlan.bind(this)} 
+          > 
+          {this.state.editing ? "DONE" : "EDIT"} 
         </button>
 
       </ReactCSSTransitionGroup>

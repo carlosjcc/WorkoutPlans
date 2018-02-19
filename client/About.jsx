@@ -3,9 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class About extends Component {
 
-  setVar() {
-      Session.set('Meteor.loginButtons.dropdownVisible', true);
-    }
+
 
   render() {    
     return (
@@ -19,8 +17,7 @@ export default class About extends Component {
             >
         <h1>About This App</h1>
         <p>This app was created by Carlos Corrales using Meteor, React, ES6 and JSX</p>
-        <p>contact: carloscorralesch@gmail.com</p>
-        {/*<button onClick={this.setVar}>Sign Up</button>*/}
+        <p>contact: carloscorralesch@gmail.com</p>        
       </ReactCSSTransitionGroup>
     )
   }
