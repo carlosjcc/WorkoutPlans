@@ -66,7 +66,7 @@ export default class RoutineDetail extends TrackerReact(Component) {
   }
 
   click() {
-    console.log("clicked");
+    //console.log("clicked");
     let nextState;
 
     if (this.state.estado) {
@@ -95,11 +95,12 @@ export default class RoutineDetail extends TrackerReact(Component) {
                 transitionLeaveTimeout={400}
                 transitionAppear={true}
                 >
-      
-        <h1>{res.name}</h1>
+        <div>        
+          {this.state.estado ? "" : <h1>{res.name}</h1>}
+        </div>
 
         <div>
-          {this.state.estado ? <ResolutionsForm planId={this.state.planId}/> : ""}
+          {this.state.estado ? <ResolutionsForm planId={this.state.planId} name={res.name} /> : ""}
         </div>
 
         <ReactCSSTransitionGroup

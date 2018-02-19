@@ -46,14 +46,20 @@ export default class ResolutionsForm extends Component {
   }
 
   render() {
+
+    //console.log(this.props);
+
+    const defValue = this.props.name ? this.props.name : "";
+
     return(
 
       <div>        
-        <form onChange={this.changeName.bind(this)} onSubmit={this.changeName.bind(this)} value="New Workout Plan">
+        <form onChange={this.changeName.bind(this)} onSubmit={this.changeName.bind(this)} >
           <input
-            placeholder="New Workout Plan" 
+            placeholder="New Workout Plan"
             ref="name"
-            type="text"            
+            type="text"
+            defaultValue={defValue}
           />
         </form>
 
