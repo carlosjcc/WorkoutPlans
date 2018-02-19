@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import ResolutionsForm from './WorkoutForm.jsx';
+import WorkoutForm from './WorkoutForm.jsx';
 
 import ExSingle from './ExSingle.jsx';
 
