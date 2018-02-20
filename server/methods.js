@@ -28,6 +28,20 @@ Meteor.methods({
       });
   },
 
+  changeEx(id, text, ex) {
+
+    console.log(id, text, ex);
+
+    Resolutions.update(
+      {_id: id, workOuts: text},
+      { $set:
+        {
+          "workOuts.$": ex
+        }
+
+      });
+  },
+
   addExercise(id, text) {
     Resolutions.update(
       {_id: id},

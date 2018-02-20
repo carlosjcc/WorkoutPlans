@@ -10,7 +10,8 @@ export default class ResolutionSingle extends TrackerReact(Component) {
     this.state = {
       subscription: {
         resolutions: Meteor.subscribe("userResolutions")
-      }
+      },
+      editing: false
     }
   }
 
@@ -24,22 +25,74 @@ export default class ResolutionSingle extends TrackerReact(Component) {
     Meteor.call('deleteExercise', this.props.id, this.props.pl);
   }
 
+  editText(props) {
+    //console.log(this.props.itemId + " clicked");
+
+    this.state.editing ? this.setState({editing: false}) : this.setState({editing: true})
+
+  }
+
+  changeEx (event, props) {
+
+    event.preventDefault();
+
+    //console.log(this.refs.exercise.value);
+    //console.log(this.props.pl);
+
+    if (this.refs.exercise.value.trim()=== "") {
+      //console.log("uno");
+      Meteor.call('changeEx', this.props.id, this.props.pl, "Exercise");
+    }
+    else {
+      console.log("dos");
+      //console.log(this.props.planId, this.props.pl, this.refs.exercise.value.trim());
+      Meteor.call('changeEx', this.props.id, this.props.pl, this.refs.exercise.value.trim());
+    }
+
+    this.state.editing ? this.setState({editing: false}) : this.setState({editing: true})
+
+  }
+
   render() {
 
-    return (
-      <div>
+    //console.log(this.props);
 
-        <li className="list">
+    const defValue = this.props.pl ? this.props.pl : "";
+
+
+
+    if (this.state.editing) {
+
+      return (
+
+        <form onSubmit={this.changeEx.bind(this)}>
+          <input
+            ref="exercise"
+            type="text"
+            defaultValue={defValue}
+          />
+        </form>
+      )
+
+    }
+
+    else {
+
+      return (
+        <li className="list" onClick={this.editText.bind(this)}>
 
           {this.props.pl}
 
           <button className="btn-cancel"
-                onClick={this.deleteExercise.bind(this)}>
-                &times;
+                  onClick={this.deleteExercise.bind(this)}>
+                  &times;
           </button>
+
         </li>
 
-      </div>
-    )
+      )
+
+    }
+
   }
 }

@@ -95,7 +95,7 @@ export default class RoutineDetail extends TrackerReact(Component) {
             >
 
           { arr.map( (ex, i) => {
-                  return <ExSingle pl={ex}  key={i} id={this.state.planId}/>;
+                  return <ExSingle pl={ex}  key={i} id={this.state.planId} itemId={i}/>;
           })}
 
         </ReactCSSTransitionGroup>
