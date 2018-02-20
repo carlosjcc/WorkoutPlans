@@ -20,8 +20,10 @@ export default class ResolutionSingle extends TrackerReact(Component) {
     Meteor.call('toggleResolution', this.props.resolution);
   }
 
-  deleteExercise() {
+  deleteExercise(event) {
     //console.log(this.props.id + " " + this.props.pl);
+    event.stopPropagation();
+
     Meteor.call('deleteExercise', this.props.id, this.props.pl);
   }
 
