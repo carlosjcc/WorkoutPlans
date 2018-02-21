@@ -46,7 +46,7 @@ export default class ResolutionSingle extends TrackerReact(Component) {
       Meteor.call('changeEx', this.props.id, this.props.pl, "Exercise");
     }
     else {
-      console.log("dos");
+      //console.log("dos");
       //console.log(this.props.planId, this.props.pl, this.refs.exercise.value.trim());
       Meteor.call('changeEx', this.props.id, this.props.pl, this.refs.exercise.value.trim());
     }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ExSingle from './ExSingle.jsx';
 import WorkoutForm from './WorkoutForm.jsx';
+import RoutineName from './RoutineName.jsx';
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -78,9 +79,11 @@ export default class RoutineDetail extends TrackerReact(Component) {
                 transitionLeaveTimeout={400}
                 transitionAppear={true}
                 >
-        <div>
+        {/*<div>
           {this.state.editing ? "" : <h1>{res.name}</h1>}
-        </div>
+        </div>*/}
+
+        <RoutineName name={res.name} planId={this.state.planId}/>
 
         <div>
           {this.state.editing ? <WorkoutForm planId={this.state.planId} name={res.name} /> : ""}
