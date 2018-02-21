@@ -73,6 +73,6 @@ export default class ResolutionsWrapper extends TrackerReact(React.Component) {
     else {
       return <h1>Please Log in.</h1>;
     }
-    
+
   }
 }
