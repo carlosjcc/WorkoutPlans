@@ -31,6 +31,7 @@ export default class AddExerciseForm extends Component {
             type="text"
             ref="resolution"
             placeholder="Add Workout"
+            autoFocus
           />
         </form>
       </div>

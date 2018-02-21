@@ -54,11 +54,12 @@ export default class RoutineName extends TrackerReact(Component) {
       return (
 
         <h1>
-          <form onSubmit={this.changeName.bind(this)}>
+          <form onSubmit={this.changeName.bind(this)} onBlur={this.changeName.bind(this)}>
             <input
               ref="name"
               type="text"
               defaultValue={defValue}
+              autoFocus
             />
           </form>
         </h1>
@@ -71,9 +72,6 @@ export default class RoutineName extends TrackerReact(Component) {
         <h1 onClick={this.editName.bind(this)} >{this.props.name}</h1>
       )      
     }
-
-    
-    
   }
 
 }

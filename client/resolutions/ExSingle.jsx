@@ -67,11 +67,12 @@ export default class ResolutionSingle extends TrackerReact(Component) {
 
       return (
 
-        <form onSubmit={this.changeEx.bind(this)}>
+        <form onSubmit={this.changeEx.bind(this)} onBlur={this.changeEx.bind(this)} >
           <input
             ref="exercise"
             type="text"
             defaultValue={defValue}
+            autoFocus
           />
         </form>
       )
@@ -81,7 +82,7 @@ export default class ResolutionSingle extends TrackerReact(Component) {
     else {
 
       return (
-        <li className="list" onClick={this.editText.bind(this)}>
+        <li className="list" onClick={this.editText.bind(this)} >
 
           {this.props.pl}
 

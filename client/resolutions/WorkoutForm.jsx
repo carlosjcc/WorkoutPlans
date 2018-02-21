@@ -46,6 +46,7 @@ export default class ResolutionsForm extends Component {
             ref="name"
             type="text"
             defaultValue={defValue}
+            autoFocus
           />
         </form>
 
