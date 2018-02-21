@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import TrackerReact from 'meteor/ultimatejs:tracker-react';
 import ExSingle from './ExSingle.jsx';
-import WorkoutForm from './WorkoutForm.jsx';
+
 import RoutineName from './RoutineName.jsx';
+import AddExerciseForm from './AddExerciseForm.jsx';
+
 
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
@@ -62,6 +64,7 @@ export default class RoutineDetail extends TrackerReact(Component) {
   render() {
 
     let res = this.resolution();
+
     if (!res) {
       return(<div>Loading...</div>);
     }
@@ -86,7 +89,7 @@ export default class RoutineDetail extends TrackerReact(Component) {
         <RoutineName name={res.name} planId={this.state.planId}/>
 
         <div>
-          {this.state.editing ? <WorkoutForm planId={this.state.planId} name={res.name} /> : ""}
+          {this.state.editing ? <AddExerciseForm planId={this.state.planId} name={res.name} /> : ""}
         </div>
 
         <ReactCSSTransitionGroup
@@ -106,7 +109,7 @@ export default class RoutineDetail extends TrackerReact(Component) {
         <button
           onClick={this.editPlan.bind(this)} 
           > 
-          {this.state.editing ? "DONE" : "EDIT"} 
+          {this.state.editing ? "DONE" : "Add Exercise"} 
         </button>
 
       </ReactCSSTransitionGroup>
